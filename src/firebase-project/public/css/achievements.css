@@ -1,0 +1,129 @@
+/*  Estilos personalizados para a página de achievements */
+
+/* body {
+  padding: 110px 0 0 0;
+  min-width: 100%;
+  overflow-y: 0 auto;
+} */
+
+.table-striped {
+  width: 100%;
+}
+
+.navbar-img {
+  width: 10px !important;
+  height: auto;
+}
+
+.main-div-header {
+  font-weight: bold;
+  background-color: rgb(193, 213, 244);
+  animation-name: mainHeaderAnimation;
+  animation-duration: 5s;
+}
+
+/* The animation code */
+@keyframes mainHeaderAnimation {
+    from {background-color: white;}
+    to {background-color: rgb(193, 213, 244);}
+}
+
+#statistics-table-div {
+  margin-bottom: 40px;
+}
+
+.middle-header {
+  font-weight: bold;
+  background-color: rgb(200, 200, 200);
+  animation-name: middleHeaderAnimation;
+  animation-duration: 5s;
+  border-radius: 15px;
+}
+
+/* The animation code */
+@keyframes middleHeaderAnimation {
+    from {background-color: white;}
+    to {background-color: rgb(200, 200, 200);}
+}
+
+.badge-table-div {
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.table-badge-column {
+  width: 20%;
+}
+
+.badge-container {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+
+.badge-img {
+  align-content: center;
+  width: 40%;
+  height: auto;
+  padding: 0px;
+}
+
+.badge-amount {
+  position: absolute;
+    top: 55%;
+    right: 30%;
+    padding-right: 0;
+    width: 100%;
+    text-align: right;
+    font-size: 200%;
+    font-weight: bolder;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+.table-badge-title-column {
+  width: 20%;
+  vertical-align: middle !important;
+  text-align: center;
+  height: 100%;
+  font-weight: bolder;
+}
+
+.table-badge-description-column .table-badge-criteria-column {
+  vertical-align: middle !important;
+  text-align: justify !important;
+  height: 100%;
+  width: 25%;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.bottom-div {
+  /* position: relative; */
+  top: 90%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
+  background-color: rgb(200, 200, 200);
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+.bottom-text {
+  position: fixed;
+  text-align: center;
+  font-size: 50%;
+}
+
+.credits {
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  color: white
+}
+
+.statistics-header {
+  color: white;
+}

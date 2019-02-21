@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "students": {
+      "$uid": {
+        ".write": false,
+        ".read": "$uid === auth.uid",
+         "fcmTokens": {
+          	".write": "$uid === auth.uid"
+        	}
+      },
+      ".indexOn": "email"
+    },
+
+    "temp_students": {
+    ".indexOn": "email"
+  	},
+
+    "enrolled_students": {
+      ".read": true,
+      ".write": false,
+      ".indexOn": "email"
+    },
+
+    "leaderboards": {
+      ".read": "auth.uid != null" ,
+      ".write": false
+    }
+  }
+}

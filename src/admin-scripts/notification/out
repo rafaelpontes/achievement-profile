@@ -1,0 +1,108 @@
+{ 'daily-exerciser': 
+   { title: 'Exercitador Diário',
+     image: './images/badges/24h/24h.png' },
+  'daily-exerciser-copper': 
+   { title: 'Exercitador Diário de Bronze',
+     image: './images/badges/24h/24h-copper.png' },
+  'daily-exerciser-silver': 
+   { title: 'Exercitador Diário de Prata',
+     image: './images/badges/24h/24h-silver.png' },
+  'daily-exerciser-gold': 
+   { title: 'Exercitador Diário de Ouro',
+     image: './images/badges/24h/24h-gold.png' },
+  'daily-exerciser-diamond': 
+   { title: 'Exercitador Diário Diamante',
+     image: './images/badges/24h/24h-diamond.png' },
+  'exerciser-247': 
+   { title: 'Exercitador 24/7',
+     image: './images/badges/247/247.png' },
+  'exerciser-30': 
+   { title: 'Exercitador Whole 30',
+     image: './images/badges/30/30.png' },
+  persistent: 
+   { title: 'Programador Persistente',
+     image: './images/badges/persistent/persistent.png' },
+  'persistent-copper': 
+   { title: 'Programador Persistente de Bronze',
+     image: './images/badges/persistent/persistent-copper.png' },
+  'persistent-silver': 
+   { title: 'Programador Persistente de Prata',
+     image: './images/badges/persistent/persistent-silver.png' },
+  'persistent-gold': 
+   { title: 'Programador Persistente de Ouro',
+     image: './images/badges/persistent/persistent-gold.png' },
+  'persistent-diamond': 
+   { title: 'Programador Persistente Diamante',
+     image: './images/badges/persistent/persistent-diamond.png' },
+  'persistent-savant': 
+   { title: 'Programador Persistente Sagaz!',
+     image: './images/badges/persistent/persistent-savant.png' },
+  'competitor-copper': 
+   { title: 'Competidor de Bronze',
+     image: './images/badges/competitor/competitor-copper.png' },
+  'competitor-silver': 
+   { title: 'Competidor de Prata',
+     image: './images/badges/competitor/competitor-silver.png' },
+  'competitor-gold': 
+   { title: 'Competidor de Ouro',
+     image: './images/badges/competitor/competitor-gold.png' },
+  'competitor-platinum': 
+   { title: 'Competidor de Platina',
+     image: './images/badges/competitor/competitor-platinum.png' },
+  'competitor-diamond': 
+   { title: 'Competidor Diamante',
+     image: './images/badges/competitor/competitor-diamond.png' },
+  'unit-1': 
+   { title: 'Unidade 1 Concluída!',
+     image: './images/badges/units/unit-1.png' },
+  'unit-2': 
+   { title: 'Unidade 2 Concluída!',
+     image: './images/badges/units/unit-2.png' },
+  'unit-3': 
+   { title: 'Unidade 3 Concluída!',
+     image: './images/badges/units/unit-3.png' },
+  'unit-4': 
+   { title: 'Unidade 4 Concluída!',
+     image: './images/badges/units/unit-4.png' },
+  'unit-5': 
+   { title: 'Unidade 5 Concluída!',
+     image: './images/badges/units/unit-5.png' },
+  'unit-6': 
+   { title: 'Unidade 6 Concluída!',
+     image: './images/badges/units/unit-6.png' },
+  'unit-7': 
+   { title: 'Unidade 7 Concluída!',
+     image: './images/badges/units/unit-7.png' },
+  'unit-8': 
+   { title: 'Unidade 8 Concluída!',
+     image: './images/badges/units/unit-8.png' },
+  'unit-9': 
+   { title: 'Unidade 9 Concluída!',
+     image: './images/badges/units/unit-9.png' },
+  'unit-10': 
+   { title: 'Unidade 10 Concluída!',
+     image: './images/badges/units/unit-10.png' },
+  collaborator: 
+   { title: 'Colaborador',
+     image: './images/badges/collaborator/collaborator.png' },
+  'collaborator-beginner': 
+   { title: 'Colaborador Iniciante',
+     image: './images/badges/collaborator/collaborator-beginner.png' },
+  'collaborator-intermediate': 
+   { title: 'Colaborador Intermediário',
+     image: './images/badges/collaborator/collaborator-intermediate.png' },
+  'collaborator-advanced': 
+   { title: 'Colaborador Avançado',
+     image: './images/badges/collaborator/collaborator-advanced.png' },
+  'collaborator-expert': 
+   { title: 'Colaborador Expert',
+     image: './images/badges/collaborator/collaborator-expert.png' },
+  'collaborator-savant': 
+   { title: 'Colaborador Sagaz!',
+     image: './images/badges/collaborator/collaborator-savant.png' },
+  'professional-approximator': 
+   { title: 'Aproximador Profissional!',
+     image: './images/badges/extras/pi/pi-aprox.png' },
+  'extra-badge': 
+   { title: 'Badge Extra!',
+     image: './images/badges/extras/pi/pi-aprox.png' } }

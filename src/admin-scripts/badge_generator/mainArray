@@ -1,0 +1,181 @@
+
+	'passagem_aerea': {
+		title: "Passagem Aerea!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'caixa_preta': {
+		title: "Caixa Preta!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'quem_acertou_menos': {
+		title: "Quem Acertou Menos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'segundo_maior_menor': {
+		title: "Segundo Maior Menor!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'mastery_learning': {
+		title: "Mastery Learning!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'ataque_mais_positivo': {
+		title: "Ataque Mais Positivo!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'pesquisa_hoteis': {
+		title: "Pesquisa Hoteis!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'media_limite': {
+		title: "Media Limite!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'custo_inss': {
+		title: "Custo Inss!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'parte_fracionaria': {
+		title: "Parte Fracionaria!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'converte_matricula': {
+		title: "Converte Matricula!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'perimetro_de_triangulo': {
+		title: "Perimetro De Triangulo!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'media_dos_extremos': {
+		title: "Media Dos Extremos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'conta_divisiveis': {
+		title: "Conta Divisiveis!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'pesquisa_voos': {
+		title: "Pesquisa Voos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'prof_equacoes': {
+		title: "Prof Equacoes!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'fahrenheit_celsius': {
+		title: "Fahrenheit Celsius!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'tiro_ao_alvo_2': {
+		title: "Tiro Ao Alvo 2!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'mais_velho': {
+		title: "Mais Velho!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'octal_decimal': {
+		title: "Octal Decimal!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'k_moldura': {
+		title: "K Moldura!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'hello_world': {
+		title: "Hello World!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'qualidade': {
+		title: "Qualidade!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'mm_sort': {
+		title: "Mm Sort!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'caixa_alta': {
+		title: "Caixa Alta!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'separa_duas_cores': {
+		title: "Separa Duas Cores!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'letras_coincidentes': {
+		title: "Letras Coincidentes!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'transporte_modificado': {
+		title: "Transporte Modificado!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'quadrado_na_circunferencia': {
+		title: "Quadrado Na Circunferencia!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'descarta_coincidentes': {
+		title: "Descarta Coincidentes!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'ordena_tipos': {
+		title: "Ordena Tipos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'calculadora_de_medias': {
+		title: "Calculadora De Medias!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'verifica_operacoes_extrato': {
+		title: "Verifica Operacoes Extrato!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'menor_dos_extremos': {
+		title: "Menor Dos Extremos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'hospital_de_trauma': {
+		title: "Hospital De Trauma!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'dv_cpf': {
+		title: "Dv Cpf!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'conjunto_mais_elementos': {
+		title: "Conjunto Mais Elementos!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'eh_triangulo': {
+		title: "Eh Triangulo!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'teorema_de_herao': {
+		title: "Teorema De Herao!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'pi_por_aproximacoes': {
+		title: "Aproximador Profissional!",
+		imgsrc: "./images/badges/extras/pi/pi-aprox.png"
+	},
+	'resumo_passagem': {
+		title: "Resumo Passagem!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'soma_divisores_do_primeiro': {
+		title: "Soma Divisores Do Primeiro!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'imprime_nota_fiscal': {
+		title: "Imprime Nota Fiscal!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'square_code': {
+		title: "Square Code!",
+		imgsrc: "./images/badges/noimage.png"
+	},
+	'substitui_espaco_por_virgula': {
+		title: "Substitui Espaco Por Virgula!",
+		imgsrc: "./images/badges/noimage.png"
+	},

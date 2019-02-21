@@ -1,0 +1,135 @@
+case 'passagem_aerea':
+  addUniqueBadgeByKey('passagem_aerea', student, ps.time);
+  break;
+case 'caixa_preta':
+  addUniqueBadgeByKey('caixa_preta', student, ps.time);
+  break;
+case 'quem_acertou_menos':
+  addUniqueBadgeByKey('quem_acertou_menos', student, ps.time);
+  break;
+case 'segundo_maior_menor':
+  addUniqueBadgeByKey('segundo_maior_menor', student, ps.time);
+  break;
+case 'mastery_learning':
+  addUniqueBadgeByKey('mastery_learning', student, ps.time);
+  break;
+case 'ataque_mais_positivo':
+  addUniqueBadgeByKey('ataque_mais_positivo', student, ps.time);
+  break;
+case 'pesquisa_hoteis':
+  addUniqueBadgeByKey('pesquisa_hoteis', student, ps.time);
+  break;
+case 'media_limite':
+  addUniqueBadgeByKey('media_limite', student, ps.time);
+  break;
+case 'custo_inss':
+  addUniqueBadgeByKey('custo_inss', student, ps.time);
+  break;
+case 'parte_fracionaria':
+  addUniqueBadgeByKey('parte_fracionaria', student, ps.time);
+  break;
+case 'converte_matricula':
+  addUniqueBadgeByKey('converte_matricula', student, ps.time);
+  break;
+case 'perimetro_de_triangulo':
+  addUniqueBadgeByKey('perimetro_de_triangulo', student, ps.time);
+  break;
+case 'media_dos_extremos':
+  addUniqueBadgeByKey('media_dos_extremos', student, ps.time);
+  break;
+case 'conta_divisiveis':
+  addUniqueBadgeByKey('conta_divisiveis', student, ps.time);
+  break;
+case 'pesquisa_voos':
+  addUniqueBadgeByKey('pesquisa_voos', student, ps.time);
+  break;
+case 'prof_equacoes':
+  addUniqueBadgeByKey('prof_equacoes', student, ps.time);
+  break;
+case 'fahrenheit_celsius':
+  addUniqueBadgeByKey('fahrenheit_celsius', student, ps.time);
+  break;
+case 'tiro_ao_alvo_2':
+  addUniqueBadgeByKey('tiro_ao_alvo_2', student, ps.time);
+  break;
+case 'mais_velho':
+  addUniqueBadgeByKey('mais_velho', student, ps.time);
+  break;
+case 'octal_decimal':
+  addUniqueBadgeByKey('octal_decimal', student, ps.time);
+  break;
+case 'k_moldura':
+  addUniqueBadgeByKey('k_moldura', student, ps.time);
+  break;
+case 'hello_world':
+  addUniqueBadgeByKey('hello_world', student, ps.time);
+  break;
+case 'qualidade':
+  addUniqueBadgeByKey('qualidade', student, ps.time);
+  break;
+case 'mm_sort':
+  addUniqueBadgeByKey('mm_sort', student, ps.time);
+  break;
+case 'caixa_alta':
+  addUniqueBadgeByKey('caixa_alta', student, ps.time);
+  break;
+case 'separa_duas_cores':
+  addUniqueBadgeByKey('separa_duas_cores', student, ps.time);
+  break;
+case 'letras_coincidentes':
+  addUniqueBadgeByKey('letras_coincidentes', student, ps.time);
+  break;
+case 'transporte_modificado':
+  addUniqueBadgeByKey('transporte_modificado', student, ps.time);
+  break;
+case 'quadrado_na_circunferencia':
+  addUniqueBadgeByKey('quadrado_na_circunferencia', student, ps.time);
+  break;
+case 'descarta_coincidentes':
+  addUniqueBadgeByKey('descarta_coincidentes', student, ps.time);
+  break;
+case 'ordena_tipos':
+  addUniqueBadgeByKey('ordena_tipos', student, ps.time);
+  break;
+case 'calculadora_de_medias':
+  addUniqueBadgeByKey('calculadora_de_medias', student, ps.time);
+  break;
+case 'verifica_operacoes_extrato':
+  addUniqueBadgeByKey('verifica_operacoes_extrato', student, ps.time);
+  break;
+case 'menor_dos_extremos':
+  addUniqueBadgeByKey('menor_dos_extremos', student, ps.time);
+  break;
+case 'hospital_de_trauma':
+  addUniqueBadgeByKey('hospital_de_trauma', student, ps.time);
+  break;
+case 'dv_cpf':
+  addUniqueBadgeByKey('dv_cpf', student, ps.time);
+  break;
+case 'conjunto_mais_elementos':
+  addUniqueBadgeByKey('conjunto_mais_elementos', student, ps.time);
+  break;
+case 'eh_triangulo':
+  addUniqueBadgeByKey('eh_triangulo', student, ps.time);
+  break;
+case 'teorema_de_herao':
+  addUniqueBadgeByKey('teorema_de_herao', student, ps.time);
+  break;
+case 'pi_por_aproximacoes':
+  addUniqueBadgeByKey('pi_por_aproximacoes', student, ps.time);
+  break;
+case 'resumo_passagem':
+  addUniqueBadgeByKey('resumo_passagem', student, ps.time);
+  break;
+case 'soma_divisores_do_primeiro':
+  addUniqueBadgeByKey('soma_divisores_do_primeiro', student, ps.time);
+  break;
+case 'imprime_nota_fiscal':
+  addUniqueBadgeByKey('imprime_nota_fiscal', student, ps.time);
+  break;
+case 'square_code':
+  addUniqueBadgeByKey('square_code', student, ps.time);
+  break;
+case 'substitui_espaco_por_virgula':
+  addUniqueBadgeByKey('substitui_espaco_por_virgula', student, ps.time);
+  break;

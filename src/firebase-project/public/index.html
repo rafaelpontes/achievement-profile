@@ -1,0 +1,658 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/extras/success.png">
+    <title>Perfil de Conquistas - TST</title>
+
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+		<!--linear icon css-->
+		  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+		<!--animate.css-->
+      <link rel="stylesheet" href="assets/css/animate.css">
+
+		<!--hover.css-->
+      <link rel="stylesheet" href="assets/css/hover-min.css">
+
+		<!--vedio player css-->
+      <link rel="stylesheet" href="assets/css/magnific-popup.css">
+
+		<!--owl.carousel.css-->
+      <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  		<link href="assets/css/owl.theme.default.min.css" rel="stylesheet"/>
+
+
+    <!--bootstrap.min.css-->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+		<!-- bootsnav -->
+		  <link href="assets/css/bootsnav.css" rel="stylesheet"/>
+
+    <!--style.css-->
+      <link rel="stylesheet" href="assets/css/style.css">
+
+      <!--responsive.css-->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+      <!-- [if lt IE 9] -->
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999960-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999960-1');
+      </script>
+
+      <!-- FIREBASE DEPENDENCIES -->
+      <!-- update the version number as needed -->
+      <script defer src="/__/firebase/4.10.1/firebase-app.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/4.10.1/firebase-auth.js"></script>
+      <script defer src="/__/firebase/4.10.1/firebase-database.js"></script>
+      <script defer src="/__/firebase/4.10.1/firebase-messaging.js"></script>
+      <script defer src="/__/firebase/4.10.1/firebase-storage.js"></script>
+      <!-- initialize the SDK after all desired features are loaded -->
+      <script defer src="/__/firebase/init.js"></script>
+      <!-- END OF FIREBASE DEPENDENCIES -->
+      <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+
+      <script>
+        // Add your firebase project's configuration here
+        // Initialize Firebase
+        var config = {
+          apiKey: "{apikey}",
+          authDomain: "{yourdomain}.firebaseapp.com",
+          databaseURL: "https://{youdomain}.firebaseio.com",
+          projectId: "{projectid}",
+          storageBucket: "{storageBucket}.appspot.com",
+          messagingSenderId: "{messagingSenderId}"
+        };
+        firebase.initializeApp(config);
+      </script>
+
+      <!-- My own CSS files. -->
+      <link rel="stylesheet" href="./css/achievements.css">
+      <!-- End of my own CSS files. -->
+
+      <style>
+  		canvas {
+  			-moz-user-select: none;
+  			-webkit-user-select: none;
+  			-ms-user-select: none;
+  		}
+  	</style>
+
+    </head>
+
+	<body ng-app="tstAchievements" ng-controller="MainCtlr">
+		<!--header start-->
+		<section id="home"  class="header">
+			<div class="container">
+				<div class="header-left">
+					<ul class="pull-left">
+						<li ng-show="isLoggedIn">
+							<a href="#" style="margin-right: 20px">
+                <img style="border-radius: 50%; float: none; vertical-align: middle; margin-right: 15px" ng-src="{{profilePicture}}" width="50px" aria-hidden="true">
+                {{nameMenu}}
+							</a>
+						</li><!--/li-->
+						<li ng-show="isLoggedIn">
+							<a href="#">
+								<i class="fa fa-envelope" aria-hidden="true"></i>{{emailMenu}}
+							</a>
+						</li><!--/li-->
+					</ul><!--/ul-->
+				</div><!--/.header-left -->
+
+        <div class="pull-right header-right col-xs-4" style="width: 20%; display: inline-block;">
+          <button id="btnLogin" class="btn btn-action btn-info nav-btn center" style="float: right; vertical-align: middle;" type="button" name="button" ng-click="loginPopUp()" ng-show="!isLoggedIn && !isLoadingPage">Log in</button>
+          <button id="btnLogout" class="btn btn-action pull-right" type="button" name="button" ng-click="logoutPopUp()" ng-show="isLoggedIn && !isLoadingPage" style="float: right; vertical-align: middle;">Log out</button>
+        </div>
+			</div><!--/.container -->
+
+		</section><!--/.header-->
+		<!--header end-->
+
+		<!--menu start-->
+		<section id="menu">
+			<div class="container">
+				<div class="menubar">
+					<nav class="navbar navbar-default">
+
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+              <ul class="nav navbar-nav navbar-left" style="position: relative; vertical-align: middle;">
+								<li class="smooth-menu">
+                  <!-- <div ng-show="isLoggedIn" style="display:block; vertical-align: middle; position: relative">
+
+                  </div> -->
+                  <!-- <a ng-show="isLoggedIn" href="#">
+                    <img title="{{nameMenu}}" style="border-radius: 50%; margin-right: 15px" ng-src="{{profilePicture}}" width="50px" aria-hidden="true">TST Online
+                  </a> -->
+									<div style="display:inline-block; vertical-align: middle; margin: 0px; padding: 0px">
+                    <a style="font-size: 20px;" class="font-weight-bold" href='https://tst-online.appspot.com' target="_blank">TST Online</a>
+                  </div>
+								</li>
+              </ul>
+							<button ng-show="isLoggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div><!--/.navbar-header -->
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="smooth-menu">
+									<a href="#home">Início</a>
+								</li>
+								<li ng-show="isLoggedIn" class="smooth-menu"><a href="#statistics">Estatísticas</a></li>
+								<li ng-show="isLoggedIn" class="smooth-menu"><a href="#leaderboard">Placar</a></li>
+								<li ng-show="isLoggedIn" class="smooth-menu"><a href="#badges">Badges</a></li>
+								<!-- <li class="smooth-menu"><a href="#team">.</a></li>
+								<li class="smooth-menu"><a href="#blog">.</a></li> -->
+								<li class="smooth-menu"><a href="#contact">Contato</a></li>
+							</ul><!-- / ul -->
+						</div><!-- /.navbar-collapse -->
+					</nav><!--/nav -->
+				</div><!--/.menubar -->
+			</div><!-- /.container -->
+		</section><!--/#menu-->
+		<!--menu end-->
+
+		<!-- header-slider-area start -->
+		<section class="header-slider-area">
+			<div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+
+			  <!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<div class="single-slide-item slide-1">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="single-slide-item-content">
+											<h2>Perfil de <br> Conquistas</h2>
+											<p>
+												Este perfil exibe suas conquistas ao longo do semestre.
+											</p>
+
+                      <img class="pull-right" style="width:25%; position: absolute; top: 5px; right: 10px" src="./images/extras/success.png" alt="Trophy">
+											<!-- <button type="button" class="slide-btn">
+											get started
+											</button>
+											<button type="button"  class="slide-btn">
+												explore more
+											</button> -->
+										</div><!-- /.single-slide-item-content-->
+									</div><!-- /.col-->
+								</div><!-- /.row-->
+							</div><!-- /.container-->
+						</div><!-- /.single-slide-item-->
+					</div><!-- /.item .active-->
+					<div class="item">
+						<div class="single-slide-item slide-2">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="single-slide-item-content">
+											<h2>
+												Dúvidas ou <br> Bugs?
+											</h2>
+											<p>
+												Em caso de dúvida ou bugs encontrados, favor entrar em contato! :)
+											</p>
+											<button style="position: absolute; top: 5px; right: 10px" type="button"  class="pull-right slide-btn">
+												<a href="#contact">contato</a>
+											</button>
+											<!-- <button type="button"  class="slide-btn
+											">
+												explore more
+											</button> -->
+										</div><!-- /.single-slide-item-content-->
+									</div><!-- /.col-->
+								</div><!-- /.row-->
+							</div><!-- /.container-->
+						</div><!-- /.single-slide-item-->
+					</div><!-- /.item .active-->
+				</div><!-- /.carousel-inner-->
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="lnr lnr-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="lnr lnr-chevron-right"></span>
+				</a>
+			</div><!-- /.carousel-->
+
+    <div ng-show="isLoggedIn">
+		</section><!-- /.header-slider-area-->
+		<!-- header-slider-area end -->
+    <p style="padding-bottom: 50px; " id="statistics"></p>
+    <div ng-show="isLoggedIn" style="margin-top: 50px; margin-bottom: 50px;" class="section-header text-center">
+      <h2>Estatísticas Alcançadas</h2>
+      <p>
+        Esta seção mostra algumas estatísticas diárias e semanais alcançadas por você.<br> Continue se esforçando para superá-las! :)
+      </p>
+    </div><!--/.section-header-->
+    <!--statistics start-->
+    <section ng-show="isLoggedIn"  class="statistics">
+      <div class="container">
+        <div class="statistics-counter ">
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter2.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" ng-bind="achievements.statistics.current_consecutiveActiveDays"></div>
+                <h3 class="statistics-header" title="Dias consecutivos em que pelo menos um problema foi resolvido.">Dias consecutivos ativo (Atual)</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter2.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" style="font-weight: bolder" ng-bind="achievements.statistics.consecutiveActiveDays"></div>
+                <h3 class="statistics-header" title="Dias consecutivos em que pelo menos um problema foi resolvido.">Dias consecutivos ativo (Recorde)</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter3.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" ng-bind="achievements.statistics.current_maxProbSolDay"></div>
+                <h3 class="statistics-header" title="Contabiliza as questões resolvidas entre a 0h e 23h59 de um dia. Gogogo! :D">Questões resolvidas hoje!</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter3.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" style="font-weight: bolder" ng-bind="achievements.statistics.maxProbSolDay"></div>
+                <h3 class="statistics-header" title="Contabiliza as questões resolvidas entre a 0h e 23h59 de um dia.">Questões resolvidas em um dia (Recorde)</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter1.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" ng-bind="achievements.statistics.current_maxProbSolWeek"></div>
+                <h3 class="statistics-header" title="Contabiliza as questões resolvidas entre a 0h da segunda e as 23h59 do domingo.">Questões resolvidas em uma semana (Atual)</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+          <div style="margin-bottom: 20px;"class="col-md-6 col-sm-6">
+            <div class="single-ststistics-box">
+              <div class="statistics-img">
+                <img src="assets/images/counter/counter1.png" alt="counter-icon" />
+              </div><!--/.statistics-img-->
+              <div class="statistics-content">
+                <div class="counter" style="font-weight: bolder" ng-bind="achievements.statistics.maxProbSolWeek"></div>
+                <h3 class="statistics-header" title="Contabiliza as questões resolvidas entre a 0h da segunda e as 23h59 do domingo.">Questões resolvidas em uma semana (Recorde)</h3>
+              </div><!--/.statistics-content-->
+            </div><!--/.single-ststistics-box-->
+          </div><!--/.col-->
+        </div><!--/.statistics-counter-->
+      </div><!--/.container-->
+    </section><!--/.statistics-->
+    <!--statistics end-->
+
+    <!--leaderboard start -->
+    <section ng-show="isLoggedIn"  id="leaderboard" class="we-do">
+      <div class="container">
+        <div class="we-do-details">
+          <div class="section-header text-center">
+            <h2>Placar Semanal</h2>
+            <p class="text-justify" style="width: 70%;">
+              Este gráfico exibe, anonimamente, a quantidade de questões resolvidas no TST em comparação com os demais alunos deste semestre que estão cadastrados nesta página.
+            </p>
+          </div><!--/.section-header-->
+
+        <div style="margin-top: 35px; margin-left: 8.33%; margin-right: 8.33%;" class="col-md-10 col-sm-10 col-10">
+          <canvas id="canvas" style="display: block;"       class="chartjs-render-monitor"></canvas>
+        </div>
+
+        <div ng-show="categoria != 'N/A' && isMarathonTime() && achievements.statistics.current_maxProbSolWeek != 0" style="margin-left: 20%; margin-right: 20%;" class="col-md-8 col-sm-8 col-8 alert text-center alert-info" role="alert" ng-show="isLoggedIn">Você está dentre os <span style="font-weight: bolder; font-size: large;">{{porcentagem}}%</span> alunos que mais fizeram exercícios na Maratona!
+        </div>
+
+        <div ng-show="categoria != 'N/A' && isMarathonTime() && achievements.statistics.current_maxProbSolWeek != 0" style="margin-left: 20%; margin-right: 20%;" class="col-md-8 col-sm-8 col-8 alert text-center alert-success" role="alert" ng-show="isLoggedIn">Categoria alcançada na maratona até o momento: <span style="font-weight: bolder; font-size: large;">{{categoria}}</span>.
+        </div>
+
+        <div ng-show="categoria != 'N/A' && !isMarathonTime() && achievements.statistics.current_maxProbSolWeek != 0" style="margin-left: 20%; margin-right: 20%;" class="col-md-8 col-sm-8 col-8 alert text-center alert-info" role="alert" ng-show="isLoggedIn">Você está dentre os <span style="font-weight: bolder; font-size: large;">{{porcentagem}}%</span> alunos que mais fizeram exercícios esta semana.
+        </div>
+
+        <div ng-show="categoria != 'N/A' && !isMarathonTime() && achievements.statistics.current_maxProbSolWeek != 0" style="margin-left: 20%; margin-right: 20%;" class="col-md-8 col-sm-8 col-8 alert text-center alert-success" role="alert" ng-show="isLoggedIn">Categoria alcançada esta semana até o momento: <span style="font-weight: bolder; font-size: large;">{{categoria}}</span>.
+        </div>
+      </div><!--/.we-do-details-->
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary text-center" data-toggle="modal"
+      style="margin: 30px 33% 30px; width: 33%; white-space: normal;"
+      data-target="#exampleModalCenter">
+        Como funcionam os badges de competição?
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Como funcionam os badges de competição?</h5>
+            </div>
+            <div class="modal-body">
+              <p class="text-justify">
+                Existem <span style="font-weight: bold; hover-min" title="Bronze, Prata, Ouro, Platina, Diamante.">5 categorias alcançáveis: Bronze, Prata, Ouro, Platina, Diamante.</span> Para fazer parte de uma das categorias, basta estar dentro da faixa percentual dos alunos que mais fizeram exercícios esta semana. As questões resolvidas na semana são contabilizadas da 0h da segunda até as 23h59m59s do domingo.
+              </p>
+              <br>
+              <p>As porcentagens das categorias são as seguintes:</p>
+              <br><br>
+              <img src="./images/extras/leaderboard_criteria.png" alt="Critério para leaderboard semanal." style="margin-left: 17.5%; width: 65%; height: auto">
+              <br><br>
+              <p><span>Observação:</span> se existirem poucos alunos no sistema, o critério para as posições é a colocação: 1º (Diamante), 2º (Platina), 3º (Ouro), 4º (Prata), 5º (Bronze).</p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div> <!--/.modal div end -->
+    </div><!--/.container-->
+  </section>
+
+		<!--service start-->
+		<section id="badges" ng-show="isLoggedIn"  class="service">
+				<div class="container">
+					<div class="service-details">
+            <div class="section-header text-center">
+              <h2>Badges Conquistados</h2>
+              <p class="text-justify">
+                Aqui estão os badges que você já conquistou. A depender do tipo, os badges podem ser cumulativos ou não. Caso queira ver mais detalhes, basta clicar no título do badge.</p>
+              <p ng-hide="achievements.numberOfBadges == 0"><span style="font-Weight: bold">Parabéns por eles!! :)</span></p>
+            </div><!--/.section-header-->
+
+						<div class="service-content-one">
+              <div class="row" ng-repeat="(badgeType, badgeTypeArray) in achievedBadges"> <!-- badge-type-div -->
+                <h2 style="margin-top: 20px;" class="text-center section-header" ng-if="hasAnyBadgeOfType(badgeType)" ng-bind="badgeTypeDescriptors[badgeType]"></h2>
+  								<div class="row"
+                  style="margin-top: 15px" ng-repeat="badge in badgeTypeArray"
+                  ng-if="$index % 3 == 0">
+                    <div class="col-xs-12 col-sm-4" ng-repeat="i in [$index, $index + 1, $index + 2]" ng-if="badgeTypeArray[i] != null && badgeTypeArray[i].achieved === true">
+  									<div class="service-single text-center">
+  										<div class="service-img">
+  											<img class="" ng-src="{{badgeTypeArray[i].imgsrc}}" alt="{{badgeTypeArray[i].title}}" title="{{badgeTypeArray[i].title}}"/>
+  										</div><!--/.service-img badge-container-->
+  										<div class="service-txt" style="margin: 8px">
+  											<h2>
+  												<a ng-bind="badgeTypeArray[i].title" ng-href="{{badgeTypeArray[i].key + Hint}}" data-toggle="modal" data-target="#{{badgeTypeArray[i].key + Hint}}"></a>
+  											</h2>
+                        <!-- <p ng-bind="badgeTypeArray[i].description" class="text-justify table-text-description" title="{{badgeTypeArray[i].tooltip_description}}">
+  											</p> -->
+                        <p ng-show="badgeTypeArray[i].cumulative" class="font-weight-bold" style="margin: 5px;"
+                          title="Quantidade de badges '{{badgeTypeArray[i].title}}' obtidos."><strong style="font-size: 0.8em">Quantidade:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong style="font-size: 2em">{{badgeTypeArray[i].amount}}</strong>
+                        </p>
+
+                        <div class="modal fade" ng-attr-id="{{badgeTypeArray[i].key + Hint}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document"> <!--> Badge hint modal begin <-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" ng-bind="badgeTypeArray[i].title"></h5>
+                              </div>
+                              <div class="modal-body">
+                                  <a style="margin: 5px" ng-bind="badgeTypeArray[i].cumulative == true? badgeTypeArray[i].cumulative_criteria : 'Não cumulativo.'" class="center bolder" title="{{badgeTypeArray[i].tooltip_criteria}}">
+                                  </a><br><br>
+                                  <p ng-bind="badgeTypeArray[i].description" class="bold center table-text-description" title="{{badgeTypeArray[i].tooltip_description}}">
+            											</p>
+                                <p ng-show="badgeTypeArray[i].cumulative" class="font-weight-bold" style="margin: 5px;"
+                                  title="Quantidade de badges '{{badgeTypeArray[i].title}}' obtidos.">Quantidade:&nbsp;&nbsp;<strong style="font-size: 2em">{{badgeTypeArray[i].amount}}</strong>
+                                </p>
+                                <br><br><br>
+                                <img ng-src="{{badgeTypeArray[i].imgsrc}}" alt="{{badgeTypeArray[i].title}}" title="{{badgeTypeArray[i].title}}" style="width: 65%; height: auto" class="center">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                              </div>
+                            </div> <!-- Badge hint modal content -->
+                          </div> <!-- Badge hint modal end -->
+                        </div> <!-- Badge hint modal fade -->
+  										</div><!--/.service-txt-->
+  									</div><!--/.service-single-->
+  								</div><!--/.col--> <!-- end of badge cell -->
+                </div> <!-- /.ng-repeat row -->
+            </div> <!-- /.badge type div -->
+            <h3 ng-show="achievements.numberOfBadges == 0"
+          style="margin-bottom: 50px;
+          font-size: 20px"
+          class="alert alert-light text-center col-xs-12">Ainda não possui nenhum Badge</h3>
+						</div><!--/.service-content-one-->
+					</div><!--/.service-details-->
+				</div><!--/.container-->
+
+        <!-- Badges remanescentes -->
+        <div class="container">
+          <div class="service-details">
+            <div class="section-header text-center">
+              <h2>Badges Remanescentes</h2>
+              <p class="text-justify">
+                Aqui estão os badges que ainda não foram conquistados. A depender do tipo, os badges podem ser cumulativos ou não. <br></p>
+              <p><span style="font-Weight: bold">Mãos à obra!! :D</span></p>
+            </div><!--/.section-header-->
+
+            <div class="service-content-one">
+              <div class="row" ng-repeat="(badgeType, badgeTypeArray) in notAchievedBadges"> <!-- badge-type-div -->
+                <h2 style="margin-top: 20px;" class="text-center section-header" ng-if="hasMissingBadgeOfType(badgeType)" ng-bind="badgeTypeDescriptors[badgeType]"></h2>
+  								<div class="row" style="margin-top: 15px" ng-repeat="badge in badgeTypeArray | filter:{achieved:false} track by $index" ng-if="$index % 3 == 0">
+                    <div class="col-xs-12 col-sm-4" ng-repeat="i in  [$index, $index + 1, $index + 2]" ng-if="badgeTypeArray[i] != null">
+  									<div class="service-single text-center">
+  										<div class="service-img">
+  											<img class="" src="./images/badges/locked.png" alt="{{badgeTypeArray[i].title}}" title="{{badgeTypeArray[i].title}}"/>
+  										</div><!--/.service-img badge-container-->
+  										<div class="service-txt" style="margin: 8px">
+  											<h2>
+  												<a ng-bind="badgeTypeArray[i].title" ng-href="{{badgeTypeArray[i].key + HintBlocked}}" data-toggle="modal" data-target="#{{badgeTypeArray[i].key + HintBlocked}}"></a>
+  											</h2>
+  											<p ng-bind="badgeTypeArray[i].description" class="text-justify table-text-description" title="{{badgeTypeArray[i].tooltip_description}}">
+  											</p>
+
+                        <div class="modal fade" ng-attr-id="{{badgeTypeArray[i].key + HintBlocked}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document"> <!--> Badge hint modal begin <-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" ng-bind="badgeTypeArray[i].title"></h5>
+                              </div>
+                              <div class="modal-body">
+                                  <a style="margin: 5px" ng-bind="badgeTypeArray[i].cumulative == true? badgeTypeArray[i].cumulative_criteria : 'Não cumulativo.'" class="center bolder" title="{{badgeTypeArray[i].tooltip_criteria}}">
+                                  </a><br><br>
+                                  <p ng-bind="badgeTypeArray[i].description" class="bold center table-text-description" title="{{badgeTypeArray[i].tooltip_description}}">
+            											</p>
+                                <br>
+                                <img src="./images/badges/locked.png" alt="{{badgeTypeArray[i].title}}" title="{{badgeTypeArray[i].title}}" style="width: 65%; height: auto" class="center">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                              </div>
+                            </div> <!-- Badge hint modal content -->
+                          </div> <!-- Badge hint modal end -->
+                        </div> <!-- Badge hint modal fade -->
+  										</div> <!--/.service-txt-->
+  									</div> <!--/.service-single-->
+  								</div> <!--/.col--> <!-- end of badge cell -->
+                </div> <!-- /.ng-repeat row -->
+            </div> <!-- /.badge type div -->
+            <!-- <h3 ng-show="achievements.numberOfBadges == 0"
+          style="margin-bottom: 50px;
+          font-size: 20px"
+          class="alert alert-light text-center col-xs-12">Conquistou todos os badges! Wow! :O</h3> -->
+						</div><!--/.service-content-one-->
+          </div><!--/.service-details-->
+        </div><!--/.container-->
+
+		</section><!--/.service-->
+		<!--service end-->
+
+    <div ng-show="!isLoadingPage" class="not-logged">
+      <div class="alert text-center alert-info" role="alert" style="margin-bottom: 50px" ng-show="!isLoggedIn && !hasTriedLogin">Para acessar seu perfil de conquistas, fazer login.
+      </div>
+      <p style="font-size: 20px; margin-bottom: 50px; height: auto" class="text-justify alert alert-danger" ng-show="!isEnrolledStudent && !isLoadingPage && hasTriedLogin && !isLoggedIn">Você não é um(a) aluno(a) cadastrado(a) no sistema. Somente alguns alunos da disciplina de Programação 1 do curso de Ciência da Computação da UFCG deste semestre letivo estão cadastrados.</p>
+    </div>
+
+  </div>
+		<!--contact start-->
+		<section class="contact">
+			<div class="container">
+			</div><!--/.container-->
+		</section><!--/.contact-->
+
+		<!--hm-footer start-->
+		<section class="hm-footer">
+      <p id="contact"></p>
+			<div class="container">
+				<div class="hm-footer-details">
+					<div class="row">
+            <div class="section-header contact-head  text-center">
+              <h2>Contato</h2>
+              <p>
+                Dúvidas, sugestões, ou demais questões sobre a página, contatar Rafael Pontes por <a href="mailto:rafaelpontes@copin.ufcg.edu.br">e-mail</a> ou pelo <a href="https://prog1ufcg.slack.com" target="_blank">slack da disciplina</a>.
+              </p><br>
+            </div><!--/.section-header-->
+            <div class="text-center contact-adress">
+              <div class="contact-office-address">
+                <div class="contact-online-address">
+                  <div class="single-online-address">
+                    <i class="fa fa-envelope-o"></i>
+                    rafaelpontes@copin.ufcg.edu.br
+                  </div><!--/.single-online-address-->
+                </div><!--/.contact-online-address-->
+              </div><!--/.contact-office-address-->
+            </div><!--/.contact-address-->
+            <div class="credits text-center">Badges were edited by <a href="mailto:rafaelpontes@copin.ufcg.edu.br">Rafael Pontes</a>, but original icons were made by <a href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a>, <a href="https://www.flaticon.com/authors/dimitry-miroliubov" title="Dimitry Miroliubov">Dimitry Miroliubov</a>, <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a>, <a href="https://www.freepik.com" title="Freepik">Freepik</a>, <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>, <a href="https://www.flaticon.com/authors/prosymbols" title="Prosymbols">Prosymbols</a>, <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a>, <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>, <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a>, <a href="https://www.flaticon.com/authors/twitter" title="Twitter">Twitter</a>, <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a>, <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a>, <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a>, <a href="https://www.flaticon.com/authors/ocha" title="OCHA">OCHA</a>, <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a>, <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a>, <a href="https://www.flaticon.com/authors/mynamepong" title="mynamepong">mynamepong</a>, <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev">Nikita Golubev</a>, <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>, <a href="https://www.flaticon.com/authors/prosymbols" title="Prosymbols">Prosymbols</a>, <a href="https://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a>, <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a>, <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a>, <a href="https://www.flaticon.com/authors/pixelmeetup" title="Pixelmeetup">Pixelmeetup</a>, <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a>, <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a>, <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a>, <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> and <a href="https://www.flaticon.com/authors/yannick" title="Yannick">Yannick</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and are licensed by <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a></div>
+					</div><!--/.row-->
+				</div><!--/.hm-footer-details-->
+			</div><!--/.container-->
+
+		</section><!--/.hm-footer-details-->
+		<!--hm-footer end-->
+
+		<!-- footer-copyright start -->
+		<footer class="footer-copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-7">
+						<div class="foot-copyright pull-left">
+							<p>
+								&copy; Template original da página por <a href="https://www.themesine.com">ThemeSINE</a>
+							</p>
+						</div><!--/.foot-copyright-->
+					</div><!--/.col-->
+					<div class="col-sm-5">
+						<div class="foot-menu pull-right">
+
+						</div><!-- /.foot-menu-->
+					</div><!--/.col-->
+				</div><!--/.row-->
+				<div id="scroll-Top">
+					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div><!--/.scroll-Top-->
+			</div><!-- /.container-->
+
+		</footer><!-- /.footer-copyright-->
+		<!-- footer-copyright end -->
+
+		<!-- jaquery link -->
+
+		<script src="assets/js/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+        <!--modernizr.min.js-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+
+		<!--bootstrap.min.js-->
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+		<!-- bootsnav js -->
+		<script src="assets/js/bootsnav.js"></script>
+
+		<!-- for manu -->
+		<script src="assets/js/jquery.hc-sticky.min.js" type="text/javascript"></script>
+
+
+		<!-- vedio player js -->
+		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+		<!-- isotope js -->
+		<!-- <script src="assets/js/masonry.min.js"></script>
+		<script src="assets/js/isotop-custom.js"></script> -->
+
+        <!--owl.carousel.js-->
+        <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+
+		<!-- counter js -->
+		<!-- <script src="assets/js/jquery.counterup.min.js"></script> -->
+		<!-- <script src="assets/js/waypoints.min.js"></script> -->
+
+        <!--Custom JS-->
+        <script type="text/javascript" src="assets/js/jak-menusearch.js"></script>
+        <script type="text/javascript" src="assets/js/custom.js"></script>
+
+        <!-- ChartJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+        <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+
+        <script src="./js/utils/md5.min.js"></script>
+
+        <script type="text/javascript" src="js/angular/angular.js"></script>
+        <script type="text/javascript" src="js/angular/mainController.js"></script>
+        <!-- Fim da parte implementada por Rafael Pontes -->
+
+    </body>
+
+</html>
